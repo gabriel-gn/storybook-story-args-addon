@@ -1,7 +1,8 @@
 import React from "react";
 import { addons, types } from "@storybook/addons";
 import { AddonPanel } from "@storybook/components";
-import { StoryPanel } from "./StoryPanel";
+import { StoryPanel } from "./StoryPanelBase";
+// import { StoryPanel } from "./StoryPanel";
 
 
 const ADDON_ID = "gabrielgn/source-loader";
