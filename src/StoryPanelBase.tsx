@@ -50,7 +50,7 @@ interface SourceParams {
 export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
   const story: Story | undefined = api.getCurrentStoryData() as Story;
   const selectedStoryRef = React.useRef<HTMLDivElement>(null);
-  const getAllIndexes = (arr: string, val: string) => {
+  const getAllIndexes = (arr: string, val: string) => { // usar isso pq o resto não funciona zzzz
     var indexes = [], i = -1;
     while ((i = arr.indexOf(val, i+1)) != -1){
       indexes.push(i);
@@ -59,28 +59,37 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
   };
 
   let { source, locationsMap }: SourceParams = useParameter('storySource', {
-    source: 'Loading source...',
+    source: '\`Loading source...\`',
   });
-  source = `
-    (args) => ({
-    props: args,
-    template: \`
-            <pm-button
-              [label]="label"
-              [type]="type"
-              [busy]="busy"
-              [busyText]="busyText"
-              [iconClass]="iconClass"
-              [outline]="outline"
-              [disabled]="disabled"
-              >
-              Button Content
-            </pm-button>
-              \`
-    })
-  `;
+  // source = `
+  //   (args) => ({
+  //   props: args,
+  //   template: \`
+  //           <pm-button
+  //             [label]="label"
+  //             [type]="type"
+  //             [busy]="busy"
+  //             [busyText]="busyText"
+  //             [iconClass]="iconClass"
+  //             [outline]="outline"
+  //             [disabled]="disabled"
+  //             >
+  //             Button Content
+  //           </pm-button>
+  //             \`
+  //   })
+  // `;
   const templateIndexes = getAllIndexes(source, "`");
   source = source.substring(templateIndexes[0] + 1, templateIndexes[1] - 1);
+
+  const storyArgs = useArgs();
+  const storyArgKeys = Object.keys(storyArgs).length > 0 ? Object.keys(storyArgs[0]) : [];
+  let storyArgsCode = '';
+  for (let i = 0; i < storyArgKeys.length; i++) {
+    storyArgsCode += `public ${storyArgKeys[i]} = ${JSON.stringify(storyArgs[0][storyArgKeys[i]])};\n`;
+  }
+  console.log(storyArgsCode);
+
   const currentLocation = locationsMap
     ? locationsMap[
       Object.keys(locationsMap).find((key: string) => {
@@ -185,13 +194,24 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
     return <span>{parts}</span>;
   };
   return story ? (
-    <StyledSyntaxHighlighter
-      language="html"
-      format={true}
-      copyable={false}
-      padded
-    >
-      {source}
-    </StyledSyntaxHighlighter>
+    <div>
+      <StyledSyntaxHighlighter
+        language="html"
+        format={true}
+        copyable={false}
+        padded
+      >
+        {source}
+      </StyledSyntaxHighlighter>
+      <div style={{width: '100%', 'border-bottom': '1px solid rgba(0, 0, 0, 0.1)'}}></div>
+      <StyledSyntaxHighlighter
+        language="ts"
+        format={true}
+        copyable={false}
+        padded
+      >
+        {storyArgsCode}
+      </StyledSyntaxHighlighter>
+    </div>
   ) : null;
 };
