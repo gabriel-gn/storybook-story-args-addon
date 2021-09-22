@@ -3,13 +3,15 @@
   "version": "0.0.1",
   "description": "Show angular template with args on story tab",
   "keywords": [
-    "storybook-addons"
+    "storybook-addons",
+    "code",
+    "test"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/gabriel-gn/storybook-story-args-addon"
   },
-  "author": "winkerVSbecks",
+  "author": "gabriel-gn",
   "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
