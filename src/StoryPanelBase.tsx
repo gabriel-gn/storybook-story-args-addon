@@ -88,7 +88,6 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
   for (let i = 0; i < storyArgKeys.length; i++) {
     storyArgsCode += `public ${storyArgKeys[i]} = ${JSON.stringify(storyArgs[0][storyArgKeys[i]])};\n`;
   }
-  console.log(storyArgsCode);
 
   const currentLocation = locationsMap
     ? locationsMap[
