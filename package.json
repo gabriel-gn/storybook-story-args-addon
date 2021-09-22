@@ -1,15 +1,13 @@
 {
-  "name": "storybook-addon-kit",
-  "version": "0.0.0",
-  "description": "everything you need to build a Storybook addon",
+  "name": "storybook-ng-source",
+  "version": "0.0.1",
+  "description": "Show angular template with args on story tab",
   "keywords": [
-    "storybook-addons",
-    "style",
-    "test"
+    "storybook-addons"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/storybookjs/storybook-addon-kit"
+    "url": "https://github.com/gabriel-gn/storybook-story-args-addon"
   },
   "author": "winkerVSbecks",
   "license": "MIT",

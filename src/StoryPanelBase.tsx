@@ -61,24 +61,6 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
   let { source, locationsMap }: SourceParams = useParameter('storySource', {
     source: '\`Loading source...\`',
   });
-  // source = `
-  //   (args) => ({
-  //   props: args,
-  //   template: \`
-  //           <pm-button
-  //             [label]="label"
-  //             [type]="type"
-  //             [busy]="busy"
-  //             [busyText]="busyText"
-  //             [iconClass]="iconClass"
-  //             [outline]="outline"
-  //             [disabled]="disabled"
-  //             >
-  //             Button Content
-  //           </pm-button>
-  //             \`
-  //   })
-  // `;
   const templateIndexes = getAllIndexes(source, "`");
   source = source.substring(templateIndexes[0] + 1, templateIndexes[1] - 1);
 
