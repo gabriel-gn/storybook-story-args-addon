@@ -202,7 +202,7 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
       >
         {source}
       </StyledSyntaxHighlighter>
-      <div style={{width: '100%', 'border-bottom': '1px solid rgba(0, 0, 0, 0.1)'}}></div>
+      <div style={{width: '100%', borderBottom: '1px solid rgba(0, 0, 0, 0.1)'}}></div>
       <StyledSyntaxHighlighter
         language="ts"
         format={true}
