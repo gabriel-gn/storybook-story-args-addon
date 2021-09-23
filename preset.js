@@ -3,7 +3,7 @@ function config(entry = []) {
 }
 
 function managerEntries(entry = []) {
-  return [...entry, require.resolve("./dist/esm/preset.js")];
+  return [...entry, require.resolve('./dist/esm/register')];
 }
 
 module.exports = {

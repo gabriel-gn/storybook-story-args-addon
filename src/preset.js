@@ -3,4 +3,3 @@ function managerEntries(entry = []) {
 }
 
 module.exports = { managerEntries }
-// module.exports = require('./dist/preset.js');
