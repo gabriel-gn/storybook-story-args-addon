@@ -72,7 +72,7 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
         r.push([a]);
       }
       return r;
-    }, []);
+    }, []); // [[0, 1], [2, 3], [3, 4]...]
     for (let t = 0; t < templateVariablesQuotesTuples.length; t++) {
       templateVariables.push(source.substring(templateVariablesQuotesTuples[t][0] + 1, templateVariablesQuotesTuples[t][1]))
     }
