@@ -66,7 +66,7 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
   let templateVariables = []
   if (templateVariablesQuotes.length % 2 === 0) {
     for (let i = 0; i < templateVariablesQuotes.length; i+2) {
-      templateVariables.push(source.substring(templateVariablesQuotes[i] + 1, templateVariablesQuotes[i + 1]));
+      templateVariables.push(source.substring(templateVariablesQuotes[i] + 1, templateVariablesQuotes[i + 1] - 1));
     }
   }
   source = source.substring(templateIndexes[0] + 1, templateIndexes[1] - 1);
