@@ -66,7 +66,7 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
   let templateVariables = []
   if (templateVariablesQuotes.length % 2 === 0) {
     for (const i = 0; i < templateVariablesQuotes.length; i+2) {
-      templateVariables.push(source.substring(templateVariablesQuotes[i] + 1, templateVariablesQuotes[i + 1]));
+      templateVariables.push(source.substring(templateVariablesQuotes[i] + 1, templateVariablesQuotes[i + 1] - 1));
     }
   }
   source = source.substring(templateIndexes[0] + 1, templateIndexes[1] - 1);
@@ -76,7 +76,7 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
   let storyArgsCode = '';
   for (let i = 0; i < storyArgKeys.length; i++) {
     if (templateVariables.length > 0) { // caso tenha variaveis de template, vê as válidas
-      if (templateVariables.includes(storyArgKeys[i])) {
+      if (templateVariables.indexOf(storyArgKeys[i]) > -1) {
         storyArgsCode += `public ${storyArgKeys[i]} = ${JSON.stringify(storyArgs[0][storyArgKeys[i]])};\n`;
       }
     } else { // caso não, inclui qualquer uma que encontrar, até as do construtor
