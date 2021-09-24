@@ -1,3 +1,16 @@
+# v0.0.8 (Fri Sep 24 2021)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/gabriel-gn/storybook-story-args-addon into main ([@gabriel-gn](https://github.com/gabriel-gn))
+- :wrench: ignore non template variables ([@gabriel-gn](https://github.com/gabriel-gn))
+
+#### Authors: 1
+
+- Gabriel Nogueira ([@gabriel-gn](https://github.com/gabriel-gn))
+
+---
+
 # v0.0.7 (Thu Sep 23 2021)
 
 #### ⚠️ Pushed to `main`
