@@ -1,4 +1,4 @@
-# Angular ng-source Addon
+# Storybook ng-source Addon
 
 ### Getting Started
 
