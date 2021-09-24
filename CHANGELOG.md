@@ -1,3 +1,15 @@
+# v0.0.12 (Fri Sep 24 2021)
+
+#### ⚠️ Pushed to `main`
+
+- :wrench: ajuste? ([@gabriel-gn](https://github.com/gabriel-gn))
+
+#### Authors: 1
+
+- Gabriel Nogueira ([@gabriel-gn](https://github.com/gabriel-gn))
+
+---
+
 # v0.0.11 (Fri Sep 24 2021)
 
 #### ⚠️ Pushed to `main`
