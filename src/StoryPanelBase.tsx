@@ -61,12 +61,20 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
   let { source, locationsMap }: SourceParams = useParameter('storySource', {
     source: '\`Loading source...\`',
   });
-  const templateIndexes = getAllIndexes(source, "`");
-  const templateVariablesQuotes = getAllIndexes(source, "\"");
-  let templateVariables = []
+  const templateIndexes: number[] = getAllIndexes(source, "`");
+  const templateVariablesQuotes: number[] = getAllIndexes(source, "\"");
+  let templateVariables: string[] = []
   if (templateVariablesQuotes.length % 2 === 0) {
-    for (let i = 0; i < templateVariablesQuotes.length; i+2) {
-      templateVariables.push(source.substring(templateVariablesQuotes[i] + 1, templateVariablesQuotes[i + 1] - 1));
+    const templateVariablesQuotesTuples: any[] = templateVariablesQuotes.reduce(function (r, a, i) {
+      if (i % 2) {
+        r[r.length - 1].push(a);
+      } else {
+        r.push([a]);
+      }
+      return r;
+    }, []);
+    for (let t = 0; t < templateVariablesQuotesTuples.length; t++) {
+      templateVariables.push(source.substring(templateVariablesQuotesTuples[t][0] + 1, templateVariablesQuotesTuples[t][1]))
     }
   }
   source = source.substring(templateIndexes[0] + 1, templateIndexes[1] - 1);
