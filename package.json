@@ -1,6 +1,6 @@
 {
   "name": "storybook-ng-source-addon",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Show angular template with args on story tab",
   "keywords": [
     "storybook-addons",
