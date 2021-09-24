@@ -1,3 +1,16 @@
+# v0.0.10 (Fri Sep 24 2021)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/gabriel-gn/storybook-story-args-addon into main ([@gabriel-gn](https://github.com/gabriel-gn))
+- :wrench: correção const ([@gabriel-gn](https://github.com/gabriel-gn))
+
+#### Authors: 1
+
+- Gabriel Nogueira ([@gabriel-gn](https://github.com/gabriel-gn))
+
+---
+
 # v0.0.9 (Fri Sep 24 2021)
 
 #### ⚠️ Pushed to `main`
