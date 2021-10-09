@@ -61,6 +61,24 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
   let { source, locationsMap }: SourceParams = useParameter('storySource', {
     source: '\`Loading source...\`',
   });
+  source = `
+    (args) => ({
+    props: args,
+    template: \`
+            <pm-button
+              [label]="label"
+              [type]="type"
+              [busy]="busy"
+              [busyText]="busyText"
+              [iconClass]="iconClass"
+              [outline]="outline"
+              [disabled]="disabled"
+              >
+              Button Content
+            </pm-button>
+              \`
+    })
+  `;
   const templateIndexes: number[] = getAllIndexes(source, "`");
   const templateVariablesQuotes: number[] = getAllIndexes(source, "\"");
   let templateVariables: string[] = []
@@ -82,13 +100,18 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
   const storyArgs = useArgs();
   const storyArgKeys = Object.keys(storyArgs).length > 0 ? Object.keys(storyArgs[0]) : [];
   let storyArgsCode = '';
+  let sourceWithArgs = `${source}`;
   for (let i = 0; i < storyArgKeys.length; i++) {
+    const argKey = storyArgKeys[i];
+    const argValue = `${JSON.stringify(storyArgs[0][argKey])}`.replace(/"/g, "'"); // troca os " por '
     if (templateVariables.length > 0) { // caso tenha variaveis de template, vê as válidas
-      if (templateVariables.indexOf(storyArgKeys[i]) > -1) {
-        storyArgsCode += `public ${storyArgKeys[i]} = ${JSON.stringify(storyArgs[0][storyArgKeys[i]])};\n`;
+      if (templateVariables.includes(argKey)) {
+        storyArgsCode += `public ${argKey} = ${argValue};\n`;
+        sourceWithArgs = sourceWithArgs.replace(`="${argKey}"`, `="${argValue}"`)
       }
     } else { // caso não, inclui qualquer uma que encontrar, até as do construtor
-      storyArgsCode += `public ${storyArgKeys[i]} = ${JSON.stringify(storyArgs[0][storyArgKeys[i]])};\n`;
+      storyArgsCode += `public ${argKey} = ${argValue};\n`;
+      sourceWithArgs = sourceWithArgs.replace(`="${argKey}"`, `"${argValue}"`)
     }
   }
 
@@ -195,8 +218,20 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
 
     return <span>{parts}</span>;
   };
+
+  let showCodeSeparated: boolean = true;
+
   return story ? (
-    <div>
+    <div style={{position: 'relative'}}>
+      <button
+        onClick={() => {
+          showCodeSeparated = !showCodeSeparated;
+          console.log(showCodeSeparated);
+        }}
+        style={{position: 'absolute', top: '1em', right: '1em', zIndex: 999}}
+      >
+        {'Change View'}
+      </button>
       <StyledSyntaxHighlighter
         language="html"
         format={true}
@@ -213,6 +248,15 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
         padded
       >
         {storyArgsCode}
+      </StyledSyntaxHighlighter>
+      <div style={{width: '100%', borderBottom: '1px solid rgba(0, 0, 0, 0.1)'}}></div>
+      <StyledSyntaxHighlighter
+        language="html"
+        format={true}
+        copyable={false}
+        padded
+      >
+        {sourceWithArgs}
       </StyledSyntaxHighlighter>
     </div>
   ) : null;
