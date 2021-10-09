@@ -1,8 +1,13 @@
+[![npm version](https://badge.fury.io/js/storybook-ng-source-addon.svg)](https://www.npmjs.com/package/storybook-ng-source-addon)
+[![GitHub version](https://img.shields.io/github/stars/gabriel-gn/storybook-story-args-addon?style=social)](https://github.com/gabriel-gn/storybook-story-args-addon)
+
 # Storybook ng-source Addon
 
 Show your args evaluated on template or splitted into code/HTML.
 
 Ideal for fast prototyping components and copy-paste based development.
+
+(If you like it, please consider giving it a star so I can keep it updated :D)
 
 Splitted Args (.HTML/.TS)             |  Evaluated Args (.HTML)
 :-------------------------:|:-------------------------:
