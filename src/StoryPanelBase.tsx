@@ -1,5 +1,5 @@
 import React from 'react';
-import { API, Story, useParameter, useArgs } from '@storybook/api';
+import { API, Story, useParameter, useArgs, useGlobals } from "@storybook/api";
 import { styled } from '@storybook/theming';
 import { Link } from '@storybook/router';
 import {
@@ -61,24 +61,25 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
   let { source, locationsMap }: SourceParams = useParameter('storySource', {
     source: '\`Loading source...\`',
   });
-  source = `
-    (args) => ({
-    props: args,
-    template: \`
-            <pm-button
-              [label]="label"
-              [type]="type"
-              [busy]="busy"
-              [busyText]="busyText"
-              [iconClass]="iconClass"
-              [outline]="outline"
-              [disabled]="disabled"
-              >
-              Button Content
-            </pm-button>
-              \`
-    })
-  `;
+  // development only below
+  // source = `
+  //   (args) => ({
+  //   props: args,
+  //   template: \`
+  //           <pm-button
+  //             [label]="label"
+  //             [type]="type"
+  //             [busy]="busy"
+  //             [busyText]="busyText"
+  //             [iconClass]="iconClass"
+  //             [outline]="outline"
+  //             [disabled]="disabled"
+  //             >
+  //             Button Content
+  //           </pm-button>
+  //             \`
+  //   })
+  // `;
   const templateIndexes: number[] = getAllIndexes(source, "`");
   const templateVariablesQuotes: number[] = getAllIndexes(source, "\"");
   let templateVariables: string[] = []
@@ -219,45 +220,59 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
     return <span>{parts}</span>;
   };
 
-  let showCodeSeparated: boolean = true;
+  const [globals, updateGlobals] = useGlobals();
+  const showSeparatedCode = globals['gabrielgn-source-loader'] || false;
+
+  const SourceTemplate = () => (
+    <StyledSyntaxHighlighter
+      language="html"
+      format={true}
+      copyable={false}
+      padded
+    >
+      {source}
+    </StyledSyntaxHighlighter>
+  );
+
+  const SourceTsCode = () => (
+    <StyledSyntaxHighlighter
+      language="ts"
+      format={true}
+      copyable={false}
+      padded
+    >
+      {storyArgsCode}
+    </StyledSyntaxHighlighter>
+  );
+
+  const SourceTemplateWithVariables = () => (
+    <StyledSyntaxHighlighter
+      language="html"
+      format={true}
+      copyable={false}
+      padded
+    >
+      {sourceWithArgs}
+    </StyledSyntaxHighlighter>
+  )
 
   return story ? (
     <div style={{position: 'relative'}}>
       <button
         onClick={() => {
-          showCodeSeparated = !showCodeSeparated;
-          console.log(showCodeSeparated);
+          updateGlobals({ ['gabrielgn-source-loader']: !showSeparatedCode })
         }}
-        style={{position: 'absolute', top: '1em', right: '1em', zIndex: 999}}
+        style={{
+              position: 'absolute', top: '1em', right: '1em', zIndex: 999,
+              border: "2px solid rgba(0, 0, 0, 0.1)", color: "rgba(0, 0, 0, 0.5)", borderRadius: '10px',
+              padding: '0.5em', fontSize: '1.5em', cursor: 'pointer'
+        }}
       >
-        {'Change View'}
+        { !showSeparatedCode ? '⟲' : '⟳'}
       </button>
-      <StyledSyntaxHighlighter
-        language="html"
-        format={true}
-        copyable={false}
-        padded
-      >
-        {source}
-      </StyledSyntaxHighlighter>
-      <div style={{width: '100%', borderBottom: '1px solid rgba(0, 0, 0, 0.1)'}}></div>
-      <StyledSyntaxHighlighter
-        language="ts"
-        format={true}
-        copyable={false}
-        padded
-      >
-        {storyArgsCode}
-      </StyledSyntaxHighlighter>
-      <div style={{width: '100%', borderBottom: '1px solid rgba(0, 0, 0, 0.1)'}}></div>
-      <StyledSyntaxHighlighter
-        language="html"
-        format={true}
-        copyable={false}
-        padded
-      >
-        {sourceWithArgs}
-      </StyledSyntaxHighlighter>
+      { !showSeparatedCode ? <SourceTemplate /> : <SourceTemplateWithVariables /> }
+      { !showSeparatedCode ? <div style={{width: '100%', borderBottom: '1px solid rgba(0, 0, 0, 0.1)'}} /> : null }
+      { !showSeparatedCode ? <SourceTsCode /> : null }
     </div>
   ) : null;
 };
