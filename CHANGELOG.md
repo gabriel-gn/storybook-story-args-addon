@@ -1,3 +1,15 @@
+# v0.0.15 (Sat Oct 09 2021)
+
+#### ⚠️ Pushed to `main`
+
+- :sparkles: arrow to change views ([@gabriel-gn](https://github.com/gabriel-gn))
+
+#### Authors: 1
+
+- Gabriel Nogueira ([@gabriel-gn](https://github.com/gabriel-gn))
+
+---
+
 # v0.0.14 (Sat Oct 09 2021)
 
 #### ⚠️ Pushed to `main`
