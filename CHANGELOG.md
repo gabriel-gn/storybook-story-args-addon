@@ -1,3 +1,15 @@
+# v0.0.16 (Sat Oct 09 2021)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/gabriel-gn/storybook-story-args-addon ([@gabriel-gn](https://github.com/gabriel-gn))
+
+#### Authors: 1
+
+- Gabriel Nogueira ([@gabriel-gn](https://github.com/gabriel-gn))
+
+---
+
 # v0.0.15 (Sat Oct 09 2021)
 
 #### ⚠️ Pushed to `main`
