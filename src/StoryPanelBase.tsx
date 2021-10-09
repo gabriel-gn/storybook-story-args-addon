@@ -113,7 +113,7 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
       storyArgsCode += `public ${argKey} = ${argValue};\n`;
       sourceWithArgs = sourceWithArgs.replace(`="${argKey}"`, `"${argValue}"`)
     }
-  }
+  } 
 
   const currentLocation = locationsMap
     ? locationsMap[
