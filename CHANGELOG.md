@@ -1,3 +1,16 @@
+# v0.0.14 (Sat Oct 09 2021)
+
+#### ⚠️ Pushed to `main`
+
+- :wrench: trigger CI ([@gabriel-gn](https://github.com/gabriel-gn))
+- :wrench: adjusting only declared variables [ci skip] ([@gabriel-gn](https://github.com/gabriel-gn))
+
+#### Authors: 1
+
+- Gabriel Nogueira ([@gabriel-gn](https://github.com/gabriel-gn))
+
+---
+
 # v0.0.13 (Fri Sep 24 2021)
 
 #### ⚠️ Pushed to `main`
