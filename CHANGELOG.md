@@ -1,3 +1,15 @@
+# v0.0.18 (Mon Oct 18 2021)
+
+#### ⚠️ Pushed to `main`
+
+- :art: storybook catalog icon ([@gabriel-gn](https://github.com/gabriel-gn))
+
+#### Authors: 1
+
+- Gabriel Nogueira ([@gabriel-gn](https://github.com/gabriel-gn))
+
+---
+
 # v0.0.17 (Sat Oct 09 2021)
 
 #### ⚠️ Pushed to `main`
