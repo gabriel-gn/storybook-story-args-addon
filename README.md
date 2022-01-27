@@ -13,6 +13,12 @@ Splitted Args (.HTML/.TS)             |  Evaluated Args (.HTML)
 :-------------------------:|:-------------------------:
 <img src="docs/images/ex_splitted_args.jpg" width="450">  |  <img src="docs/images/ex_evaluated_args.jpg" width="450">
 
+### Versions
+
+Storybook Version | NPM package
+:-------------------------:|:-------------------------:
+6.3.6 | storybook-ng-source-addon@0.0.18
+
 ### Getting Started
 
 Install into your project with `npm i storybook-ng-source-addon --save`
