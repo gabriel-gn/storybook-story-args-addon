@@ -61,7 +61,6 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
   let { source, locationsMap }: SourceParams = useParameter('storySource', {
     source: '\`Loading source...\`',
   });
-  console.table(source);
   // development only below
   // source = `
   //   (args) => ({

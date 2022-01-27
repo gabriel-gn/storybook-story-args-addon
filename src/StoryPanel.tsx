@@ -14,6 +14,7 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
     if (!!story) {
       if (story.hasOwnProperty('parameters')) {
         storysource = story.parameters.storySource.source;
+        console.log(story);
         // storysource = `
         //   (args) => ({
         //   props: args,
