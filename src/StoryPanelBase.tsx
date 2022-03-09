@@ -45,7 +45,9 @@ interface SourceParams {
   locationsMap?: LocationsMap;
 }
 export const StoryPanel: React.FC<any> = () => {
+  debugger;
   const api = useStorybookApi();
+  console.log('api', api);
   const story: Story | undefined = api.getCurrentStoryData() as Story;
   console.log('story', story);
   const selectedStoryRef = React.useRef<HTMLDivElement>(null);
