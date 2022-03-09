@@ -7,6 +7,7 @@ import {
   SyntaxHighlighterProps,
   SyntaxHighlighterRendererProps,
 } from '@storybook/components';
+import { useStorybookApi } from '@storybook/api';
 
 // @ts-expect-error Typedefs don't currently expose `createElement` even though it exists
 import { createElement as createSyntaxHighlighterElement } from 'react-syntax-highlighter';
@@ -39,16 +40,14 @@ const areLocationsEqual = (a: SourceBlock, b: SourceBlock): boolean =>
   a.endLoc.line === b.endLoc.line &&
   a.endLoc.col === b.endLoc.col;
 
-interface StoryPanelProps {
-  api: API;
-}
-
 interface SourceParams {
   source: string;
   locationsMap?: LocationsMap;
 }
-export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
+export const StoryPanel: React.FC<any> = () => {
+  const api = useStorybookApi();
   const story: Story | undefined = api.getCurrentStoryData() as Story;
+  console.log('story', story);
   const selectedStoryRef = React.useRef<HTMLDivElement>(null);
   const getAllIndexes = (arr: string, val: string) => { // usar isso pq o resto não funciona zzzz
     var indexes = [], i = -1;
@@ -80,6 +79,7 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
   //             \`
   //   })
   // `;
+  console.log('source', source);
   const templateIndexes: number[] = getAllIndexes(source, "`");
   const templateVariablesQuotes: number[] = getAllIndexes(source, "\"");
   let templateVariables: string[] = []

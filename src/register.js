@@ -2,6 +2,7 @@ import React from "react";
 import { addons, types } from "@storybook/addons";
 import { AddonPanel } from "@storybook/components";
 import { StoryPanel } from "./StoryPanelBase";
+import { Panel } from "./panel";
 
 
 const ADDON_ID = "gabrielgn/source-loader";
@@ -12,6 +13,7 @@ addons.register(ADDON_ID, (api) => {
   addons.add(PANEL_ID, {
     type: types.PANEL,
     title: "Source",
+    match: ({ viewMode }) => viewMode === "story",
     render: ({ active, key }) => (
       <AddonPanel active={active} key={key} api={api}>
         <StoryPanel key={key} api={api} />
