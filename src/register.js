@@ -12,6 +12,7 @@ addons.register(ADDON_ID, (api) => {
   addons.add(PANEL_ID, {
     type: types.PANEL,
     title: "Source",
+    paramKey: 'storysource',
     match: ({ viewMode }) => viewMode === "story",
     render: ({ active, key }) => (
       <AddonPanel active={active} key={key} api={api}>
