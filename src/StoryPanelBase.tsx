@@ -40,13 +40,16 @@ const areLocationsEqual = (a: SourceBlock, b: SourceBlock): boolean =>
   a.endLoc.line === b.endLoc.line &&
   a.endLoc.col === b.endLoc.col;
 
+interface StoryPanelProps {
+  api: API;
+}
+
 interface SourceParams {
   source: string;
   locationsMap?: LocationsMap;
 }
-export const StoryPanel: React.FC<any> = () => {
+export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
   debugger;
-  const api = useStorybookApi();
   console.log('api', api);
   const story: Story | undefined = api.getCurrentStoryData() as Story;
   console.log('story', story);
